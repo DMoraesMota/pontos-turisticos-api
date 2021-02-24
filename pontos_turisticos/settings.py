@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 from decouple import config
+from dj_database_url import parse as dburl
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -28,7 +29,8 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = [
     'https://pontos-turisticos-dev.herokuapp.com/',
-    'localhost:8000'
+    'localhost:8000',
+    '*'
 ]
 
 
@@ -85,7 +87,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'pontos_turisticos.wsgi.application'
 
-from dj_database_url import parse as dburl
+
 
 default_dburl = 'sqlite:///' + os.path.join(BASE_DIR, 'db.sqlite3')
 
